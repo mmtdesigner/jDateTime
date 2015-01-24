@@ -389,7 +389,9 @@ class jDateTime
         $month = (intval($month) == 0) ? self::date('n') : intval($month);
         $day   = (intval($day)   == 0) ? self::date('j') : intval($day);
         $year  = (intval($year)  == 0) ? self::date('Y') : intval($year);
-        
+        if ($month > 12 || $month < 0 || $day > 31 || $day < 0) {
+                return false;
+        }
         //Check if its jalali date
         if ( $jalali === true || ($jalali === null && self::$jalali === true) )
         {
